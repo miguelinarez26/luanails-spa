@@ -3,30 +3,48 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { GlowingEdgeCard } from './GlowingEdgeCard';
 
-const services = [
+export const services = [
     {
-        title: "Manicura Gel Premium",
-        category: "Cuidado y Color",
-        price: "$45",
-        image: "/assets/portfolio-1.png"
+        id: "manos",
+        title: "Manos y Uñas",
+        category: "Semipermanentes, Esculpidas, Kapping, Rusa y Soft Gel",
+        price: "Desde 15€",
+        image: "/images/servicios/manos.png"
     },
     {
-        title: "Uñas Smart NFC",
-        category: "Tecnología",
-        price: "$80",
-        image: "/assets/portfolio-3.png"
+        id: "pies",
+        title: "Pies (Pedicura)",
+        category: "Pedicura Rusa, Tradicional, Quiropedia y Spa",
+        price: "Desde 15€",
+        image: "/images/servicios/pies.png"
     },
     {
-        title: "Esculpido Soft Gel",
-        category: "Extensiones",
-        price: "$65",
-        image: "/assets/portfolio-2.png"
+        id: "spa",
+        title: "Terapias Spa",
+        category: "Chocolaterapia, Parafina, Botas y Peeling",
+        price: "Desde 10€",
+        image: "/images/servicios/spa.png"
     },
     {
-        title: "Ritual Spa Japonés",
-        category: "Bienestar",
-        price: "$30",
-        image: "/assets/hero.png"
+        id: "depilacion",
+        title: "Depilación Corporal",
+        category: "Depilación con cera y láser",
+        price: "Consultar",
+        image: "/images/servicios/depilacion.png"
+    },
+    {
+        id: "masajes",
+        title: "Spa Corporal y Masajes",
+        category: "Masajes reductores, relajantes y linfáticos",
+        price: "Consultar",
+        image: "/images/servicios/masajes.png"
+    },
+    {
+        id: "cejas",
+        title: "Cejas y Pestañas",
+        category: "Todos los servicios de cejas y pestañas",
+        price: "Consultar",
+        image: "/images/servicios/cejas.png"
     }
 ];
 
@@ -35,19 +53,20 @@ export const ServiceGrid = () => {
         <section className="py-24 px-6 md:px-12 bg-white text-dark">
             <div className="flex items-end justify-between mb-16 border-b border-dark/10 pb-8">
                 <h2 className="text-6xl md:text-8xl font-medium tracking-tighter font-heading">
-                    Servicios <br /> Selectos.
+                    Servicios Selectos.
                 </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
                 {services.map((service, i) => (
-                    <motion.div
+                    <motion.a
                         key={i}
+                        href={`/servicios#${service.id}`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ delay: i * 0.1 }}
-                        className="group cursor-pointer cursor-scale perspective-1000"
+                        className="group cursor-pointer cursor-scale perspective-1000 block"
                     >
                         <motion.div
                             whileHover={{
@@ -73,17 +92,17 @@ export const ServiceGrid = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex justify-between items-start pt-2 px-2 pb-4 mt-auto">
-                                        <div>
+                                    <div className="flex justify-between items-start pt-2 px-2 pb-4">
+                                        <div className="pr-4">
                                             <h3 className="text-4xl font-medium tracking-tight mb-2 font-heading group-hover:text-gold transition-colors">{service.title}</h3>
                                             <p className="text-xl text-neutral-500">{service.category}</p>
                                         </div>
-                                        <span className="font-mono text-3xl text-gold font-bold">{service.price}</span>
+                                        <span className="font-mono text-3xl text-gold font-bold whitespace-nowrap shrink-0">{service.price}</span>
                                     </div>
                                 </div>
                             </GlowingEdgeCard>
                         </motion.div>
-                    </motion.div>
+                    </motion.a>
                 ))}
             </div>
         </section>

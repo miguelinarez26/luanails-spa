@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --color-gold: #837751;
+  --color-dark: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-dark font-sans selection:bg-black selection:text-white cursor-none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+}
+
+.cursor-scale {
+  /* Marker class for magnetic cursor interaction */
+}
+
+.btn-glow {
+  @apply shadow-[0_0_15px_rgba(131,119,81,0.6)] hover:shadow-[0_0_25px_rgba(131,119,81,0.9)] transition-shadow duration-300;
+}
